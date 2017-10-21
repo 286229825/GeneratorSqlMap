@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+	<context id="DB2Tables" targetRuntime="MyBatis3">
+		<commentGenerator>
+			<!-- 是否去除自动生成的注释，true：是，false：否 -->
+			<property name="suppressAllComments" value="true"/>
+		</commentGenerator>
+		
+		<!-- 数据库连接的信息：驱动类、连接地址、用户名、密码 -->
+		<jdbcConnection 
+			driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost:3306/online_exam_system?characterEncoding=utf-8"
+			userId="root" 
+			password="286229825">
+		</jdbcConnection>
+		
+		<!-- 默认为false，把JDBC、DECIMAL 和 NUMERIC 类型解析为Integer
+			为true时：把JDBC、DECIMAL 和 NUMERIC 类型解析为java.math.BigDecimal -->
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+		
+		<!-- targetPackage:指定生成 po 类的位置，也就是包名
+			targetProject：po类所在的工程名 -->
+		<javaModelGenerator targetPackage="po" 
+			targetProject="src">
+			<!-- enableSubPackages:是否让schema作为包的后缀，true：是，false：否 -->
+			<property name="enableSubPackages" value="false" />
+			<!-- 从数据库返回的值要被清理前后的空格 -->
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+	
+		<!-- targetPackage:指定生成 mapper映射的位置，也就是包名
+			targetProject：mapper映射所在的工程名 -->
+		<sqlMapGenerator targetPackage="mapper"
+			targetProject="src">
+			<!-- enableSubPackages:是否让schema作为包的后缀，true：是，false：否 -->
+			<property name="enableSubPackages" value="false" />
+		</sqlMapGenerator>
+
+		<!-- targetPackage:指定生成mapper接口的位置，也就是包名
+			targetProject：mapper接口所在的工程名 -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="mapper" targetProject="src">
+			<!-- enableSubPackages:是否让schema作为包的后缀，true：是，false：否 -->
+			<property name="enableSubPackages" value="false" />
+		</javaClientGenerator>
+		
+		<!-- 指定数据库表 -->
+		<table tableName="lesson"></table>
+		<table tableName="manager"></table>
+		<table tableName="questions"></table>
+		<table tableName="student"></table>
+		<table tableName="studentresult"></table>
+		<table tableName="taoti"></table>
+
+	</context>
+</generatorConfiguration>
